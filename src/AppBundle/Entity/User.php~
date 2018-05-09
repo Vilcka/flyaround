@@ -13,6 +13,14 @@ use Doctrine\ORM\Mapping as ORM;
 class User
 {
 
+
+    /**
+     * @var int
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Reservation", mappedBy="reservation")
+     */
+    private $reservations;
+
     /**
      * @var int
      *
@@ -268,5 +276,80 @@ class User
     {
         return $this->isACertifiedPilot;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pilots = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->reviewAuthors = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add pilot
+     *
+     * @param \AppBundle\Entity\Flight $pilot
+     *
+     * @return User
+     */
+    public function addPilot(\AppBundle\Entity\Flight $pilot)
+    {
+        $this->pilots[] = $pilot;
+
+        return $this;
+    }
+
+    /**
+     * Remove pilot
+     *
+     * @param \AppBundle\Entity\Flight $pilot
+     */
+    public function removePilot(\AppBundle\Entity\Flight $pilot)
+    {
+        $this->pilots->removeElement($pilot);
+    }
+
+    /**
+     * Get pilots
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPilots()
+    {
+        return $this->pilots;
+    }
+
+    /**
+     * Add reviewAuthor
+     *
+     * @param \AppBundle\Entity\Review $reviewAuthor
+     *
+     * @return User
+     */
+    public function addReviewAuthor(\AppBundle\Entity\Review $reviewAuthor)
+    {
+        $this->reviewAuthors[] = $reviewAuthor;
+
+        return $this;
+    }
+
+    /**
+     * Remove reviewAuthor
+     *
+     * @param \AppBundle\Entity\Review $reviewAuthor
+     */
+    public function removeReviewAuthor(\AppBundle\Entity\Review $reviewAuthor)
+    {
+        $this->reviewAuthors->removeElement($reviewAuthor);
+    }
+
+    /**
+     * Get reviewAuthors
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReviewAuthors()
+    {
+        return $this->reviewAuthors;
+    }
+}
