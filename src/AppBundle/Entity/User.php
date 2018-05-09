@@ -17,6 +17,14 @@ class User
         return $this->firstName. " " . $this->lastName;
     }
 
+
+    /**
+     * @var
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="reviewAuthor")
+     */
+    private $reviewAuthors;
+
     /**
      * @var int
      *
