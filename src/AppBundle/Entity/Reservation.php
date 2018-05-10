@@ -13,6 +13,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Reservation
 {
 
+    /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="passengers")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $passenger;
 
     /**
      * @var int
@@ -198,5 +205,29 @@ class Reservation
     public function getReservation()
     {
         return $this->reservation;
+    }
+
+    /**
+     * Set passenger
+     *
+     * @param \AppBundle\Entity\User $passenger
+     *
+     * @return Reservation
+     */
+    public function setPassenger(\AppBundle\Entity\User $passenger)
+    {
+        $this->passenger = $passenger;
+
+        return $this;
+    }
+
+    /**
+     * Get passenger
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getPassenger()
+    {
+        return $this->passenger;
     }
 }

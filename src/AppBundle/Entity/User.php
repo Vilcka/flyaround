@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class User
 {
 
+    /**
+     * @var int
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Reservation", mappedBy="passenger")
+     */
+    private $passengers;
 
     /**
      * @var int
@@ -385,5 +391,39 @@ class User
     public function getReservations()
     {
         return $this->reservations;
+    }
+
+    /**
+     * Add passenger
+     *
+     * @param \AppBundle\Entity\Reservation $passenger
+     *
+     * @return User
+     */
+    public function addPassenger(\AppBundle\Entity\Reservation $passenger)
+    {
+        $this->passengers[] = $passenger;
+
+        return $this;
+    }
+
+    /**
+     * Remove passenger
+     *
+     * @param \AppBundle\Entity\Reservation $passenger
+     */
+    public function removePassenger(\AppBundle\Entity\Reservation $passenger)
+    {
+        $this->passengers->removeElement($passenger);
+    }
+
+    /**
+     * Get passengers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPassengers()
+    {
+        return $this->passengers;
     }
 }

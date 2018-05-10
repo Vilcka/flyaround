@@ -24,7 +24,7 @@ class Flight
      * @var int
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="pilots")
-     * @ORM\JoinColumn(nullable=falase)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $pilot;
 
@@ -379,4 +379,22 @@ class Flight
     {
         return $this->flights;
     }
+
+    /**
+     * @return int
+     */
+    public function getPilot()
+    {
+        return $this->pilot;
+    }
+
+    /**
+     * @param int $pilot
+     */
+    public function setPilot($pilot)
+    {
+        $this->pilot = $pilot;
+    }
+
+
 }
