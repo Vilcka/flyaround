@@ -16,7 +16,7 @@ class Flight
     /**
      * @var int
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Reservation", mappedBy="reservation")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Reservation", mappedBy="flight")
      */
     private $flights;
 
@@ -379,4 +379,22 @@ class Flight
     {
         return $this->flights;
     }
+
+    /**
+     * @return int
+     */
+    public function getPilot()
+    {
+        return $this->pilot;
+    }
+
+    /**
+     * @param int $pilot
+     */
+    public function setPilot($pilot)
+    {
+        $this->pilot = $pilot;
+    }
+
+
 }

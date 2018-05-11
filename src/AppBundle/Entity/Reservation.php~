@@ -29,13 +29,6 @@ class Reservation
      */
     private $flight;
 
-    /**
-     * @var int
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="reservations")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $reservation;
 
     public function __toString()
     {

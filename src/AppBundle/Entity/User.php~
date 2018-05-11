@@ -20,12 +20,6 @@ class User
      */
     private $passengers;
 
-    /**
-     * @var int
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Reservation", mappedBy="reservation")
-     */
-    private $reservations;
 
     /**
      * @var int
