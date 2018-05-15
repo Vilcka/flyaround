@@ -1,3 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{%  %}
+{% block body %}
+    <h1>Hello</h1>
+    {{ dump(reviews)}}
+    {% for review in reviews %}
+        <p>Auteur : {{ review.reviewAuthor }}</p>
+        <p>Date de publication : {{ review.PublicationDate | date("m/d/Y")}}</p>
+    {% endfor %}
+
+{% endblock %}
