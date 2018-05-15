@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ReviewController
@@ -20,7 +21,6 @@ class ReviewController extends Controller
 
     /**
      *
-     * @param User $user
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/", name="review_index")
@@ -37,9 +37,15 @@ class ReviewController extends Controller
         ]);
     }
 
-
-    public function newAction()
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("/new", name="review_new")
+     * @Method({"GET", "POST"})
+     */
+    public function newAction(Request $request)
     {
 
+        return $this->render('review/new.html.twig');
     }
 }

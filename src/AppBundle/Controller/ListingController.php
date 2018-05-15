@@ -25,7 +25,7 @@ class ListingController extends Controller
      *
      * @param Reservation $reservation
      * @param Flight $flight
-     * @param PlaneModel $planeModel
+     * @param PlaneModel $planemodel
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/{reservation_id}/flight/{flight_id}/planemodel/{planemodel_id}", name="listing_index", requirements={"reservation_id": "\d+"})
@@ -35,12 +35,12 @@ class ListingController extends Controller
      * @ParamConverter("planemodel", options={"mapping": {"planemodel_id": "id"}})
      *
      */
-    public function indexAction(Reservation $reservation, Flight $flight, PlaneModel $planeModel)
+    public function indexAction(Reservation $reservation, Flight $flight, PlaneModel $planemodel)
     {
         return $this->render('listing/index.html.twig', [
             'reservation' => $reservation,
             'flight' => $flight,
-            'planemodel' => $planeModel,
+            'planemodel' => $planemodel,
         ]);
     }
 

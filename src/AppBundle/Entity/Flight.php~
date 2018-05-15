@@ -20,7 +20,7 @@ class Flight
      */
     private $flights;
 
-    /***
+    /**
      * @var int
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="pilots")
@@ -379,22 +379,30 @@ class Flight
     {
         return $this->flights;
     }
+    
+
 
     /**
-     * @return int
+     * Set pilot
+     *
+     * @param \AppBundle\Entity\User $pilot
+     *
+     * @return Flight
+     */
+    public function setPilot(\AppBundle\Entity\User $pilot)
+    {
+        $this->pilot = $pilot;
+
+        return $this;
+    }
+
+    /**
+     * Get pilot
+     *
+     * @return \AppBundle\Entity\User
      */
     public function getPilot()
     {
         return $this->pilot;
     }
-
-    /**
-     * @param int $pilot
-     */
-    public function setPilot($pilot)
-    {
-        $this->pilot = $pilot;
-    }
-
-
 }
