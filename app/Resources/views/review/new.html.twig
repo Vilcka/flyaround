@@ -1,1 +1,15 @@
 {% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Review Creation</h1>
+    {{ form_start(form) }}
+        {{ form_row(form.text) }}
+        {{ form_row(form.note) }}
+        {{ form_row(form.reviewAuthor) }}
+        {{ form_row(form.userRated) }}
+        {{ form_row(form.publicationDate) }}
+        {{ form_row(form.reviewAuthor) }}
+        {{ form_row(form.reviewAuthor) }}
+        {{ form_row(form.agreeTerms) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+{% endblock %}
