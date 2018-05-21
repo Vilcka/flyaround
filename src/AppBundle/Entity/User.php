@@ -2,15 +2,17 @@
 
 namespace AppBundle\Entity;
 
+
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
+class User extends BaseUser
 {
 
     /**
@@ -47,7 +49,7 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -276,11 +278,13 @@ class User
     {
         return $this->isACertifiedPilot;
     }
+
     /**
      * Constructor
      */
     public function __construct()
     {
+        parent::__construct();
         $this->pilots = new \Doctrine\Common\Collections\ArrayCollection();
         $this->reviewAuthors = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -288,11 +292,11 @@ class User
     /**
      * Add pilot
      *
-     * @param \AppBundle\Entity\Flight $pilot
+     * @param Flight $pilot
      *
      * @return User
      */
-    public function addPilot(\AppBundle\Entity\Flight $pilot)
+    public function addPilot(Flight $pilot)
     {
         $this->pilots[] = $pilot;
 
@@ -302,9 +306,9 @@ class User
     /**
      * Remove pilot
      *
-     * @param \AppBundle\Entity\Flight $pilot
+     * @param Flight $pilot
      */
-    public function removePilot(\AppBundle\Entity\Flight $pilot)
+    public function removePilot(Flight $pilot)
     {
         $this->pilots->removeElement($pilot);
     }
@@ -322,11 +326,11 @@ class User
     /**
      * Add reviewAuthor
      *
-     * @param \AppBundle\Entity\Review $reviewAuthor
+     * @param Review $reviewAuthor
      *
      * @return User
      */
-    public function addReviewAuthor(\AppBundle\Entity\Review $reviewAuthor)
+    public function addReviewAuthor(Review $reviewAuthor)
     {
         $this->reviewAuthors[] = $reviewAuthor;
 
@@ -336,9 +340,9 @@ class User
     /**
      * Remove reviewAuthor
      *
-     * @param \AppBundle\Entity\Review $reviewAuthor
+     * @param Review $reviewAuthor
      */
-    public function removeReviewAuthor(\AppBundle\Entity\Review $reviewAuthor)
+    public function removeReviewAuthor(Review $reviewAuthor)
     {
         $this->reviewAuthors->removeElement($reviewAuthor);
     }
@@ -356,11 +360,11 @@ class User
     /**
      * Add reservation
      *
-     * @param \AppBundle\Entity\Reservation $reservation
+     * @param Reservation $reservation
      *
      * @return User
      */
-    public function addReservation(\AppBundle\Entity\Reservation $reservation)
+    public function addReservation(Reservation $reservation)
     {
         $this->reservations[] = $reservation;
 
@@ -370,9 +374,9 @@ class User
     /**
      * Remove reservation
      *
-     * @param \AppBundle\Entity\Reservation $reservation
+     * @param Reservation $reservation
      */
-    public function removeReservation(\AppBundle\Entity\Reservation $reservation)
+    public function removeReservation(Reservation $reservation)
     {
         $this->reservations->removeElement($reservation);
     }
@@ -390,11 +394,11 @@ class User
     /**
      * Add passenger
      *
-     * @param \AppBundle\Entity\Reservation $passenger
+     * @param Reservation $passenger
      *
      * @return User
      */
-    public function addPassenger(\AppBundle\Entity\Reservation $passenger)
+    public function addPassenger(Reservation $passenger)
     {
         $this->passengers[] = $passenger;
 
@@ -404,9 +408,9 @@ class User
     /**
      * Remove passenger
      *
-     * @param \AppBundle\Entity\Reservation $passenger
+     * @param Reservation $passenger
      */
-    public function removePassenger(\AppBundle\Entity\Reservation $passenger)
+    public function removePassenger(Reservation $passenger)
     {
         $this->passengers->removeElement($passenger);
     }
@@ -414,7 +418,7 @@ class User
     /**
      * Get passengers
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return int
      */
     public function getPassengers()
     {
