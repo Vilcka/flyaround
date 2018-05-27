@@ -1,7 +1,13 @@
+{% extends 'base.html.twig' %}
+
 {% block title %}User's register page{% endblock %}
-
+{% block body %}
 {% block content %}
-    {% block fos_user_content %}{% endblock %}
+    <div class="container">
+        {% block fos_user_content %}{% endblock %}
 
-    <a href="{{ path('fos_user_registration_register') }}">Register here</a>
+        <a href="{{ path('fos_user_registration_register') }}">Register here</a>
+    </div>
+
+{% endblock %}
 {% endblock %}
