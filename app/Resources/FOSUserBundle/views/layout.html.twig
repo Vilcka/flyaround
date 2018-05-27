@@ -1,5 +1,7 @@
-{% block title %}Demo Application{% endblock %}
+{% block title %}User's register page{% endblock %}
 
 {% block content %}
     {% block fos_user_content %}{% endblock %}
+
+    <a href="{{ path('fos_user_registration_register') }}">Register here</a>
 {% endblock %}
