@@ -15,7 +15,7 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
-/node_modules/*
+/node_modules/
 /web/build/*
 /web/bundles/
 Supprimerait .idea/inspectionProfiles/
