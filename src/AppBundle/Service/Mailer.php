@@ -9,8 +9,6 @@
 namespace AppBundle\Service;
 
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 class Mailer
 {
     private $mail;
